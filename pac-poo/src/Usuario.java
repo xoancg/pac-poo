@@ -4,7 +4,7 @@ public class Usuario {
 	// Atributos
 	private String nombre;
 	private int edad;
-	private String DNI;
+	private String DNI = null;
 
 	// Constructor de usuarios
 	public Usuario() {
@@ -44,17 +44,17 @@ public class Usuario {
 
 	// Setter DNI con comprobación de formato correcto del DNI: ocho números y una
 	// letra con guión opcional
-	// El enunciado dice que la función debe devolver un booleano conforme el DNI es
-	// correcto o no. De momento, obviamos este requisito por resultar innecesario.
-	public void setDNI(String DNI) {
+	public boolean setDNI(String DNI) {
 
 		if (DNI.matches("^[0-9]{8}-?[a-zA-Z]$") == true) {
 
 			this.DNI = DNI.toUpperCase();
+			
+			return true;
 
 		} else {
 
-			this.DNI = null;
+			return false;
 		}
 
 	}

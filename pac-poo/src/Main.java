@@ -23,7 +23,6 @@ public class Main {
 		
 		System.out.println("Introduce tu edad: ");
 
-		//int edad = consola.nextInt();
 		int edad = Integer.parseInt(consola.nextLine());
 		// https://es.stackoverflow.com/questions/121684/problema-clase-scanner-en-java-al-introducir-varios-strings-como-variables
 				
@@ -39,7 +38,7 @@ public class Main {
 			
 			miUsuario.setDNI(DNI);
 		
-			if (miUsuario.getDNI() != null) {
+			if (miUsuario.setDNI(DNI) == true) {
 				
 				System.out.println("\nHola, " + miUsuario.getNombre() + ". Tu usuario ha sido creado correctamente.");
 				
@@ -47,12 +46,11 @@ public class Main {
 												
 				System.out.println("DNI Incorrecto. Inténtalo de nuevo:");
 				
-				//String DNI = consola.nextLine();
-				
 			}
 
 				
 		} while (miUsuario.getDNI() == null);
+		// Este bucle se ejecuta mientras el valor de DNI sea nulo.
 		
 		// Creación de cuenta y mensaje de confirmación
 		
@@ -61,6 +59,7 @@ public class Main {
 		System.out.println("\nEl saldo inicial de tu cuenta es de " + miCuenta.getSaldo() + " €.");
 		
 		System.out.println("\n>>> " + miCuenta.toString());
+		
 		// consola.close();
 	}
 
@@ -69,16 +68,52 @@ public class Main {
 		int accion;
 		
 		// Mostramos el menú de acciones disponibles
-		System.out.println(
-				"\nRealiza una nueva acción:\n" + "1. Introduce un nuevo gasto\n" + "2. Introduce un nuevo ingreso\n"
-						+ "3. Mostrar gastos\n" + "4. Mostrar ingresos\n" + "5. Mostrar saldo\n" + "0. Salir\n");
+		do {
 
-		Scanner consola = new Scanner(System.in);
+			System.out.println(
+					"\nRealiza una nueva acción:\n" + "1. Introduce un nuevo gasto\n" + "2. Introduce un nuevo ingreso\n"
+							+ "3. Mostrar gastos\n" + "4. Mostrar ingresos\n" + "5. Mostrar saldo\n" + "0. Salir\n");
+	
+			Scanner consola = new Scanner(System.in);
+			
+			// Acción seleccionada por el usuario
+			accion = Integer.parseInt(consola.nextLine());
+			// https://es.stackoverflow.com/questions/121684/problema-clase-scanner-en-java-al-introducir-varios-strings-como-variables
+					
+		} while (accion < 0 || accion > 5);
 		
-		// Acción seleccionada por el usuario
-		accion = consola.nextInt();
-
-		System.out.println("Escogiste la acción " + accion);
+		switch (accion) {
+		
+		case 0: //Salir
+			
+			System.out.println("Salir.");
+			break;
+			
+		case 1: // Nuevo gasto
+			
+			System.out.println("Introduce un nuevo gasto:\n");
+			break;
+		
+		case 2: // Nuevo ingreso
+			
+			System.out.println("Introduce un nuevo ingreso:\n");
+			break;
+		
+		case 3: // Mostrar gastos
+			
+			System.out.println("Éstos son tu gastos:\n");
+			break;
+		
+		case 4: // Mostrar ingresos
+			
+			System.out.println("Éstos son tu ingresos:\n");
+			break;
+		
+		case 5: // Ver saldo
+			
+			System.out.println("El saldo de tu cuenta es:\n");
+			break;
+		}
 
 		// consola.close();
 
