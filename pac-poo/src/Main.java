@@ -29,7 +29,7 @@ public class Main {
 		miUsuario.setEdad(edad);
 		
 		// DNI y creación del usuario
-
+		// El bucle se ejecuta mientras el valor de DNI sea nulo.
 		do {
 
 			System.out.println("Introduce tu DNI: ");
@@ -50,7 +50,6 @@ public class Main {
 
 				
 		} while (miUsuario.getDNI() == null);
-		// Este bucle se ejecuta mientras el valor de DNI sea nulo.
 		
 		// Creación de cuenta y mensaje de confirmación
 		

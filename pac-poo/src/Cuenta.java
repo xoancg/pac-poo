@@ -1,11 +1,12 @@
+import java.util.List;
 
 public class Cuenta {
 
 	// Atributos
 	private double saldo;
 	private Usuario usuario;
-	//private List<Gasto> gastos;
-	//private List<Ingreso> ingresos;
+	private List<Gasto> gastos; // Lista 'gastos' de tipo Gasto
+	private List<Ingreso> ingresos; // Lista 'ingresos' de tipo Ingreso
 	
 	// Constructor cuenta	
 	public Cuenta (Usuario usuario) {
@@ -37,24 +38,28 @@ public class Cuenta {
 		
 		this.usuario = usuario;
 	}
-	/*
+	
 	public double addIngresos (String description, double cantidad) {
 		
+		return 0;
 	}
 	
-	double addGastos (String description, double cantidad) {
+	public double addGastos (String description, double cantidad) {
 		
+		return 0;
 	}
 	
-	public List<Ingresos> getIngresos() {
+	// Getter ingresos
+	public List<Ingreso> getIngresos() {
 		
 		return ingresos;
 	}
 	
-	public List<Gastos> getGastos() {
+	// Getter gastos
+	public List<Gasto> getGastos() {
 		
 		return gastos;
-	}*/
+	}
 
 	@Override
 	public String toString() {
