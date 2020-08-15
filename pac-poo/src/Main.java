@@ -29,7 +29,7 @@ public class Main {
 				
 		miUsuario.setEdad(edad);
 		
-		// DNI
+		// DNI y creación del usuario
 
 		do {
 
@@ -41,11 +41,11 @@ public class Main {
 		
 			if (miUsuario.getDNI() != null) {
 				
-				System.out.println("\nHola, " + miUsuario.getNombre() + ". Sesión iniciada correctamente.\n");
+				System.out.println("\nHola, " + miUsuario.getNombre() + ". Tu usuario ha sido creado correctamente.");
 				
 			} else {
 												
-				System.out.println("DNI Incorrecto. Inténtao de novo.");
+				System.out.println("DNI Incorrecto. Inténtalo de nuevo:");
 				
 				//String DNI = consola.nextLine();
 				
@@ -54,26 +54,31 @@ public class Main {
 				
 		} while (miUsuario.getDNI() == null);
 		
-		System.out.println(miUsuario.toString());
-
+		// Creación de cuenta y mensaje de confirmación
+		
+		Cuenta miCuenta = new Cuenta(miUsuario);
+		
+		System.out.println("\nEl saldo inicial de tu cuenta es de " + miCuenta.getSaldo() + " €.");
+		
+		System.out.println("\n>>> " + miCuenta.toString());
 		// consola.close();
 	}
 
 	private static void menu() {
 
 		int accion;
-
+		
+		// Mostramos el menú de acciones disponibles
 		System.out.println(
 				"\nRealiza una nueva acción:\n" + "1. Introduce un nuevo gasto\n" + "2. Introduce un nuevo ingreso\n"
 						+ "3. Mostrar gastos\n" + "4. Mostrar ingresos\n" + "5. Mostrar saldo\n" + "0. Salir\n");
 
 		Scanner consola = new Scanner(System.in);
-
-		System.out.println("Elige una opción: ");
-
+		
+		// Acción seleccionada por el usuario
 		accion = consola.nextInt();
 
-		System.out.println("Escogiste la opción " + accion);
+		System.out.println("Escogiste la acción " + accion);
 
 		// consola.close();
 
@@ -81,11 +86,9 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		// Creación del usuario y sus datos
+		// Creación de usuario y cuenta
 		login();
-
-		// Creación de la cuenta
-
+		
 		// Visualización del menú
 		menu();
 

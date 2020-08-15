@@ -1,6 +1,7 @@
 
 public class Usuario {
-
+	
+	// Atributos
 	private String nombre;
 	private int edad;
 	private String DNI;
