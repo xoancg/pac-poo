@@ -1,6 +1,6 @@
 
 public class Cuenta {
 
-	System.out.println("Git!");
+	//System.out.println("Git!");
 	
 }

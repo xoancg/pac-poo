@@ -6,54 +6,55 @@ public class Main {
 	private static void login() {
 
 		// Creamos un usuario vacío
+		
 		Usuario miUsuario = new Usuario();	
 		
 		Scanner consola = new Scanner(System.in);
 		
 		// Nombre
+		
 		System.out.println("Introduce tu nombre: ");
 
 		String nombre = consola.nextLine();
-		//String nombre = "Xoán";
+
 		miUsuario.setNombre(nombre);
 		
 		// Edad
+		
 		System.out.println("Introduce tu edad: ");
 
 		//int edad = consola.nextInt();
 		int edad = Integer.parseInt(consola.nextLine());
 		// https://es.stackoverflow.com/questions/121684/problema-clase-scanner-en-java-al-introducir-varios-strings-como-variables
-		//int edad = 37;
-		
+				
 		miUsuario.setEdad(edad);
 		
 		// DNI
-		
-		/*do {
-			
+
+		do {
+
 			System.out.println("Introduce tu DNI: ");
 			
 			String DNI = consola.nextLine();
 			
 			miUsuario.setDNI(DNI);
-			
-		} while (!dniCorrecto);*/
-	
-	
 		
+			if (miUsuario.getDNI() != null) {
+				
+				System.out.println("\nHola, " + miUsuario.getNombre() + ". Sesión iniciada correctamente.\n");
+				
+			} else {
+												
+				System.out.println("DNI Incorrecto. Inténtao de novo.");
+				
+				//String DNI = consola.nextLine();
+				
+			}
+
+				
+		} while (miUsuario.getDNI() == null);
 		
-		// String DNI = "00000000X";
-
-		
-
-
-
-		
-		
-
-		System.out.println(miUsuario.getNombre());
-		System.out.println(miUsuario.getEdad());
-		//System.out.println(miUsuario.getDNI());
+		System.out.println(miUsuario.toString());
 
 		// consola.close();
 	}
@@ -63,7 +64,7 @@ public class Main {
 		int accion;
 
 		System.out.println(
-				"Realiza una nueva acción:\n" + "1. Introduce un nuevo gasto\n" + "2. Introduce un nuevo ingreso\n"
+				"\nRealiza una nueva acción:\n" + "1. Introduce un nuevo gasto\n" + "2. Introduce un nuevo ingreso\n"
 						+ "3. Mostrar gastos\n" + "4. Mostrar ingresos\n" + "5. Mostrar saldo\n" + "0. Salir\n");
 
 		Scanner consola = new Scanner(System.in);
@@ -88,7 +89,7 @@ public class Main {
 		// Visualización del menú
 		menu();
 
-		System.out.println("Fin del programa. \nGracias por utilizar la aplicación.");
+		System.out.println("\nFin del programa. \nGracias por utilizar la aplicación.");
 
 	}
 
