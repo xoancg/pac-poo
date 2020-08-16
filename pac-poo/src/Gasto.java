@@ -13,3 +13,4 @@ public class Gasto extends Dinero {
 		return "Gasto [dinero=" + dinero + ", description=" + description + "]";
 	}
 }
+// Proba Git
