@@ -14,5 +14,3 @@ public class Gasto extends Dinero {
 		//System.out.println("Hola!");
 	}
 }
-
-// Proba Git Linux

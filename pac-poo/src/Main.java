@@ -1,4 +1,4 @@
-import java.util.Scanner; //Importamos a clase Scanner para habilitar o programa para ler o que o usuario introduza vía consola
+import java.util.Scanner; // Importamos a clase Scanner para habilitar o programa para ler o que o usuario introduza vía consola
 
 public class Main {
 
@@ -125,6 +125,9 @@ public class Main {
 		
 		// Visualización del menú
 		menu();
+		
+		// Gestión de movimientos de ingreso o gasto
+		// operaciones();
 
 		System.out.println("\nFin del programa. \nGracias por utilizar la aplicación.");
 

@@ -3,8 +3,8 @@ import java.util.List;
 public class Cuenta {
 
 	// Atributos
-	private double saldo;
 	private Usuario usuario;
+	private double saldo;
 	private List<Gasto> gastos; // Lista 'gastos' de tipo Gasto
 	private List<Ingreso> ingresos; // Lista 'ingresos' de tipo Ingreso
 	
@@ -41,12 +41,25 @@ public class Cuenta {
 	
 	public double addIngresos (String description, double cantidad) {
 		
-		return 0;
+		saldo = saldo - cantidad;
+		
+		return saldo; // this.saldo?
 	}
 	
 	public double addGastos (String description, double cantidad) {
 		
-		return 0;
+		if (cantidad >= saldo) {
+
+			saldo = saldo - cantidad;
+			
+			return saldo; // this.saldo?
+			
+		} else  {
+			
+			return -1; // Por exemplo, xa que o saldo nunca poderá ser negativo.
+			
+		}
+
 	}
 	
 	// Getter ingresos
