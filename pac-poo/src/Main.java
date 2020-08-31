@@ -2,14 +2,20 @@ import java.util.Scanner; // Importamos a clase Scanner para habilitar o program
 
 public class Main {
 
-	// Método para creación del usuario
+	private static String description;
+	private static double cantidad;
+	private static double saldo;
+	
+	private static Scanner consola = new Scanner(System.in);
+	
+	// Método para creación del usuario y su cuenta
 	private static void login() {
 
 		// Creamos un usuario vacío
 		
 		Usuario miUsuario = new Usuario();	
 		
-		Scanner consola = new Scanner(System.in);
+		// Scanner consola = new Scanner(System.in);
 		
 		// Nombre
 		
@@ -55,13 +61,13 @@ public class Main {
 		
 		Cuenta miCuenta = new Cuenta(miUsuario);
 		
-		System.out.println("\nEl saldo inicial de tu cuenta es de " + miCuenta.getSaldo() + " €.");
+		System.out.println("\nEl saldo inicial de tu cuenta es de " + Cuenta.getSaldo() + " €.");
 		
 		System.out.println("\n>>> " + miCuenta.toString());
 		
-		// consola.close();
-	}
-
+	} // login()
+	
+	// Función para imprimir el menú en pantalla y seleccionar una opción a realizar
 	private static void menu() {
 
 		int accion;
@@ -73,13 +79,14 @@ public class Main {
 					"\nRealiza una nueva acción:\n" + "1. Introduce un nuevo gasto\n" + "2. Introduce un nuevo ingreso\n"
 							+ "3. Mostrar gastos\n" + "4. Mostrar ingresos\n" + "5. Mostrar saldo\n" + "0. Salir\n");
 	
-			Scanner consola = new Scanner(System.in);
+			// Scanner consola = new Scanner(System.in);
 			
 			// Acción seleccionada por el usuario
 			accion = Integer.parseInt(consola.nextLine());
 			// https://es.stackoverflow.com/questions/121684/problema-clase-scanner-en-java-al-introducir-varios-strings-como-variables
 					
 		} while (accion < 0 || accion > 5);
+		
 		
 		switch (accion) {
 		
@@ -95,7 +102,9 @@ public class Main {
 		
 		case 2: // Nuevo ingreso
 			
-			System.out.println("Introduce un nuevo ingreso:\n");
+			//System.out.println("Introduce un nuevo ingreso:\n");
+			nuevoIngreso();
+			
 			break;
 		
 		case 3: // Mostrar gastos
@@ -110,13 +119,36 @@ public class Main {
 		
 		case 5: // Ver saldo
 			
-			System.out.println("El saldo de tu cuenta es:\n");
+			System.out.println("El saldo de tu cuenta es: " + Cuenta.getSaldo() + " €");	
 			break;
-		}
+		}		
 
-		// consola.close();
 
-	}
+	} // menu()
+	
+	private static void nuevoGasto() {
+		
+	} // nuevoGasto()
+		
+	private static void nuevoIngreso() {
+		
+		System.out.println("\nIntroduce la descripción del ingreso:");
+		
+		description = consola.nextLine();
+		//consola.next(); // Limpiamos Scanner
+		
+		System.out.println("\nIntroduce la cantidad a ingresar:");
+		
+		cantidad = consola.nextDouble();
+		
+		saldo = Cuenta.addIngresos(description, cantidad);
+		
+		System.out.println("\nMovimiento realizado. El saldo resultante de tu cuenta es de " + saldo + "€");
+		
+		menu();
+		
+	} // nuevoIngreso()
+	
 
 	public static void main(String[] args) {
 
@@ -131,6 +163,6 @@ public class Main {
 
 		System.out.println("\nFin del programa. \nGracias por utilizar la aplicación.");
 
-	}
+	} // main()
 
-}
+} // Main Class

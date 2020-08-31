@@ -4,7 +4,7 @@ public class Cuenta {
 
 	// Atributos
 	private Usuario usuario;
-	private double saldo;
+	private static double saldo;
 	private List<Gasto> gastos; // Lista 'gastos' de tipo Gasto
 	private List<Ingreso> ingresos; // Lista 'ingresos' de tipo Ingreso
 	
@@ -12,12 +12,12 @@ public class Cuenta {
 	public Cuenta (Usuario usuario) {
 		
 		this.usuario = usuario;
-		this.saldo = 0.0;
+		Cuenta.saldo = 0.0;
 		
 	}
 	
 	// Getter saldo
-	public double getSaldo() {
+	public static double getSaldo() {
 		
 		return saldo;
 	}
@@ -39,7 +39,7 @@ public class Cuenta {
 		this.usuario = usuario;
 	}
 	
-	public double addIngresos (String description, double cantidad) {
+	public static double addIngresos (String description, double cantidad) {
 		
 		saldo = saldo - cantidad;
 		
