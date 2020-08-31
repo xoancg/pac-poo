@@ -41,7 +41,7 @@ public class Cuenta {
 	
 	public static double addIngresos (String description, double cantidad) {
 		
-		saldo = saldo - cantidad;
+		saldo = saldo + cantidad;
 		
 		return saldo; // this.saldo?
 	}

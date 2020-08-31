@@ -29,7 +29,7 @@ public class Main {
 		
 		System.out.println("Introduce tu edad: ");
 
-		int edad = Integer.parseInt(consola.nextLine());
+		int edad = Integer.parseInt(consola.nextLine()); // Consume salto de línea
 		// https://es.stackoverflow.com/questions/121684/problema-clase-scanner-en-java-al-introducir-varios-strings-como-variables
 				
 		miUsuario.setEdad(edad);
@@ -82,7 +82,8 @@ public class Main {
 			// Scanner consola = new Scanner(System.in);
 			
 			// Acción seleccionada por el usuario
-			accion = Integer.parseInt(consola.nextLine());
+			accion = Integer.parseInt(consola.nextLine()); // Consume salto de línea
+			
 			// https://es.stackoverflow.com/questions/121684/problema-clase-scanner-en-java-al-introducir-varios-strings-como-variables
 					
 		} while (accion < 0 || accion > 5);
@@ -126,20 +127,21 @@ public class Main {
 
 	} // menu()
 	
-	private static void nuevoGasto() {
+	/*private static void nuevoGasto() {
 		
-	} // nuevoGasto()
+	} // nuevoGasto()*/
 		
 	private static void nuevoIngreso() {
 		
 		System.out.println("\nIntroduce la descripción del ingreso:");
-		
-		description = consola.nextLine();
+	
+		description = "hola";
+		// description = consola.nextLine();
 		//consola.next(); // Limpiamos Scanner
 		
 		System.out.println("\nIntroduce la cantidad a ingresar:");
 		
-		cantidad = consola.nextDouble();
+		cantidad = Double.parseDouble(consola.nextLine()); // Consume salto de línea
 		
 		saldo = Cuenta.addIngresos(description, cantidad);
 		
