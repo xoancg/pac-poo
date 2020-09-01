@@ -46,20 +46,16 @@ public class Cuenta {
 		return saldo; // this.saldo?
 	}
 	
-	public double addGastos (String description, double cantidad) {
+	public static double addGastos (String description, double cantidad) throws GastoException {
 		
-		if (cantidad >= saldo) {
-
-			saldo = saldo - cantidad;
+		if (cantidad < saldo) {
 			
-			return saldo; // this.saldo?
+			throw new GastoException();
+		} 			
+		
+		saldo = saldo - cantidad;
 			
-		} else  {
-			
-			return -1; // Por exemplo, xa que o saldo nunca poderá ser negativo.
-			
-		}
-
+		return saldo; // this.saldo?
 	}
 	
 	// Getter ingresos
@@ -76,6 +72,7 @@ public class Cuenta {
 
 	@Override
 	public String toString() {
+		
 		return "Cuenta [saldo=" + saldo + ", usuario=" + usuario + "]";
 	}
 	

@@ -98,12 +98,12 @@ public class Main {
 			
 		case 1: // Nuevo gasto
 			
-			System.out.println("Introduce un nuevo gasto:\n");
+			nuevoGasto();
+			
 			break;
 		
 		case 2: // Nuevo ingreso
 			
-			//System.out.println("Introduce un nuevo ingreso:\n");
 			nuevoIngreso();
 			
 			break;
@@ -127,7 +127,30 @@ public class Main {
 
 	} // menu()
 	
-	/*private static void nuevoGasto() {
+	private static void nuevoGasto() {
+	
+		System.out.println("\nIntroduce la descripción del gasto:");
+		
+		description = consola.nextLine();
+				
+		System.out.println("\nIntroduce la cantidad a gastar:");
+		
+		
+		try {
+			
+			cantidad = Double.parseDouble(consola.nextLine()); // Consume salto de línea
+			
+			saldo = Cuenta.addGastos(description, cantidad);
+		
+			System.out.println("\nMovimiento realizado. El saldo resultante de tu cuenta es de " + Cuenta.getSaldo() + " €");
+			
+		} catch (Exception e) {
+			
+			System.out.println(e.getMessage());
+		}
+
+		
+		menu();
 		
 	} // nuevoGasto()*/
 		
@@ -135,17 +158,24 @@ public class Main {
 		
 		System.out.println("\nIntroduce la descripción del ingreso:");
 	
-		description = "hola";
-		// description = consola.nextLine();
-		//consola.next(); // Limpiamos Scanner
-		
+		description = consola.nextLine();
+				
 		System.out.println("\nIntroduce la cantidad a ingresar:");
 		
-		cantidad = Double.parseDouble(consola.nextLine()); // Consume salto de línea
+		try {
+			
+			cantidad = Double.parseDouble(consola.nextLine()); // Consume salto de línea
+			
+			saldo = Cuenta.addGastos(description, cantidad);
+			
+		} catch (GastoException e) {
+			
+			System.out.println(e.getMessage());
+		}
 		
-		saldo = Cuenta.addIngresos(description, cantidad);
 		
-		System.out.println("\nMovimiento realizado. El saldo resultante de tu cuenta es de " + saldo + "€");
+		
+		System.out.println("\nMovimiento realizado. El saldo resultante de tu cuenta es de " + Cuenta.getSaldo() + " €");
 		
 		menu();
 		

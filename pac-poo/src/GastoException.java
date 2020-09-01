@@ -10,6 +10,7 @@ public class GastoException extends Exception {
 	// Constructor
 	public GastoException() {
 		
+		super("Operación no realizada por saldo insuficiente.");
 		
 	}
 
