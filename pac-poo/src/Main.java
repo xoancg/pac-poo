@@ -86,6 +86,7 @@ public class Main {
 		case 0: // Salir
 
 			System.out.println("\nSalir.");
+			
 			break;
 
 		case 1: // Nuevo gasto
