@@ -1,5 +1,5 @@
 import java.util.List;
-import java.util.Scanner; // Importamos a clase Scanner para habilitar o programa para ler o que o usuario introduza vía consola
+import java.util.Scanner;
 
 public class Main {
 
@@ -156,7 +156,7 @@ public class Main {
 
 		menu();
 
-	} // nuevoGasto()*/
+	} // nuevoGasto()
 
 	private static void nuevoIngreso() {
 
@@ -187,7 +187,8 @@ public class Main {
 		}
 
 		menu();
-	}
+		
+	} // mostrarGastos()
 
 	private static void mostrarIngresos() {
 
@@ -199,6 +200,7 @@ public class Main {
 		}
 
 		menu();
+		
 	}
 
 	private static void mostrarSaldo() {
@@ -206,7 +208,8 @@ public class Main {
 		System.out.println("\nEl saldo actual de tu cuenta es de " + miCuenta.getSaldo() + " €");
 
 		menu();
-	}
+		
+	} // mostrarSaldo()
 
 	public static void main(String[] args) {
 
