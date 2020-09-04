@@ -134,19 +134,33 @@ public class Main {
 		description = consola.nextLine();
 				
 		System.out.println("\nIntroduce la cantidad a gastar:");
+		System.out.println("(Saldo disponible: " + Cuenta.getSaldo() + " €)");
 		
+		cantidad = Double.parseDouble(consola.nextLine()); // Consume salto de línea
+		
+		System.out.println("\n" + cantidad);
 		
 		try {
 			
-			cantidad = Double.parseDouble(consola.nextLine()); // Consume salto de línea
+			if (cantidad > Cuenta.getSaldo()) {
+				
+				System.out.println("Saldo insuficiente: " + Cuenta.getSaldo() + " €)");
+				nuevoGasto();
+				
+				//throw new GastoException();
+				
+			} else {
+				
+				saldo = Cuenta.addGastos(description, cantidad);
 			
-			saldo = Cuenta.addGastos(description, cantidad);
-		
-			System.out.println("\nMovimiento realizado. El saldo resultante de tu cuenta es de " + Cuenta.getSaldo() + " €");
+				System.out.println("\nMovimiento realizado. El saldo resultante de tu cuenta es de " + Cuenta.getSaldo() + " €");
+				
+			}
 			
-		} catch (Exception e) {
 			
-			System.out.println(e.getMessage());
+		} catch (GastoException saldoInsuficiente) {
+			
+			System.out.println(saldoInsuficiente.getMessage());
 		}
 
 		
@@ -162,18 +176,9 @@ public class Main {
 				
 		System.out.println("\nIntroduce la cantidad a ingresar:");
 		
-		try {
-			
-			cantidad = Double.parseDouble(consola.nextLine()); // Consume salto de línea
-			
-			saldo = Cuenta.addGastos(description, cantidad);
-			
-		} catch (GastoException e) {
-			
-			System.out.println(e.getMessage());
-		}
+		cantidad = Double.parseDouble(consola.nextLine()); // Consume salto de línea
 		
-		
+		saldo = Cuenta.addIngresos(description, cantidad);
 		
 		System.out.println("\nMovimiento realizado. El saldo resultante de tu cuenta es de " + Cuenta.getSaldo() + " €");
 		

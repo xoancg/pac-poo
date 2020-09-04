@@ -47,11 +47,11 @@ public class Cuenta {
 	}
 	
 	public static double addGastos (String description, double cantidad) throws GastoException {
-		
+		/*
 		if (cantidad < saldo) {
 			
 			throw new GastoException();
-		} 			
+		} */			
 		
 		saldo = saldo - cantidad;
 			

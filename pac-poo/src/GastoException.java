@@ -10,8 +10,9 @@ public class GastoException extends Exception {
 	// Constructor
 	public GastoException() {
 		
-		super("Operación no realizada por saldo insuficiente.");
-		
+		// Sobreescribimos el método getMessage() de la clase java.lang.Exception
+		super("\nOperación no realizada por saldo insuficiente. El saldo disponible es de " + Cuenta.getSaldo() + " €");
+
 	}
 
 }
