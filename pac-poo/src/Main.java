@@ -1,3 +1,4 @@
+import java.util.List;
 import java.util.Scanner; // Importamos a clase Scanner para habilitar o programa para ler o que o usuario introduza vía consola
 
 public class Main {
@@ -108,17 +109,24 @@ public class Main {
 
 		case 3: // Mostrar gastos
 
-			System.out.println("Éstos son tu gastos:\n");
+			System.out.println("\nTu gastos han sido los siguientes:\n");
+			
+			mostrarGastos();
+			
 			break;
 
 		case 4: // Mostrar ingresos
 
-			System.out.println("Éstos son tu ingresos:\n");
+			System.out.println("\nTu ingresos han sido los siguientes:\n");
+			
+			mostrarIngresos();
+			
 			break;
 
 		case 5: // Ver saldo
 
-			System.out.println("El saldo de tu cuenta es: " + Cuenta.getSaldo() + " €");
+			mostrarSaldo();
+			
 			break;
 		}
 
@@ -134,7 +142,7 @@ public class Main {
 
 		cantidad = Double.parseDouble(consola.nextLine()); // Consume salto de línea
 
-		//System.out.println("\n" + cantidad);
+		// System.out.println("\n" + cantidad);
 
 		try {
 
@@ -171,7 +179,39 @@ public class Main {
 		menu();
 
 	} // nuevoIngreso()
+	
+	private static void mostrarGastos() {
+		
+		List<Gasto> listaGastos = Cuenta.getGastos();
+		
+		for (int i = 0; i < listaGastos.size(); i++) {
+			
+			System.out.println(listaGastos.get(i));
+		}
+		
+		menu();
+	}
 
+	private static void mostrarIngresos() {
+		
+		List<Ingreso> listaIngresos = Cuenta.getIngresos();
+		
+		for (int i = 0; i < listaIngresos.size(); i++) {
+			
+			System.out.println(listaIngresos.get(i));
+		}
+		
+		menu();
+	}
+	
+	private static void mostrarSaldo() {
+	
+		System.out.println("\nEl saldo actual de tu cuenta es de " + Cuenta.getSaldo() + " €");
+		
+		menu();
+	}
+	
+	
 	public static void main(String[] args) {
 
 		// Creación de usuario y cuenta

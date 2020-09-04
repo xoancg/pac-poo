@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class Cuenta {
@@ -5,14 +6,18 @@ public class Cuenta {
 	// Atributos
 	private Usuario usuario;
 	private static double saldo;
-	private List<Gasto> gastos; // Lista 'gastos' de tipo Gasto
-	private List<Ingreso> ingresos; // Lista 'ingresos' de tipo Ingreso
+	private static List<Gasto> gastos; // Lista 'gastos' de tipo Gasto
+	private static List<Ingreso> ingresos; // Lista 'ingresos' de tipo Ingreso
 
 	// Constructor cuenta
 	public Cuenta(Usuario usuario) {
 
 		this.usuario = usuario;
 		Cuenta.saldo = 0.0;
+		
+		// Inicializamos las listas
+		Cuenta.ingresos = new ArrayList<>();
+		Cuenta.gastos = new ArrayList<>();
 
 	}
 
@@ -43,6 +48,8 @@ public class Cuenta {
 
 		saldo = saldo + cantidad;
 
+		ingresos.add(new Ingreso(cantidad, description));
+		
 		return saldo; // this.saldo?
 	}
 
@@ -55,19 +62,21 @@ public class Cuenta {
 		} else {
 
 			saldo = saldo - cantidad;
+			
+			gastos.add(new Gasto(cantidad, description));
 		}
 
 		return saldo; // this.saldo?
 	}
 
 	// Getter ingresos
-	public List<Ingreso> getIngresos() {
+	public static List<Ingreso> getIngresos() {
 
 		return ingresos;
 	}
 
 	// Getter gastos
-	public List<Gasto> getGastos() {
+	public static List<Gasto> getGastos() {
 
 		return gastos;
 	}
