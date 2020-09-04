@@ -5,28 +5,25 @@ public class Main {
 
 	private static String description;
 	private static double cantidad;
-	private static double saldo;
 
+	// Clase Scanner para que el usuario pueda introducir los datos por consola
 	private static Scanner consola = new Scanner(System.in);
+
+	// Variable de objeto para poder acceder a las propiedades de 'miCuenta' desde
+	// toda la clase
+	private static Cuenta miCuenta;
 
 	// Método para creación del usuario y su cuenta
 	private static void login() {
 
-		// Creamos un usuario vacío
-
+		// Creamos un usuario vacío y el usuario introducirá nombre, edad y DNI
 		Usuario miUsuario = new Usuario();
-
-		// Scanner consola = new Scanner(System.in);
-
-		// Nombre
 
 		System.out.println("Introduce tu nombre: ");
 
 		String nombre = consola.nextLine();
 
 		miUsuario.setNombre(nombre);
-
-		// Edad
 
 		System.out.println("Introduce tu edad: ");
 
@@ -35,8 +32,7 @@ public class Main {
 
 		miUsuario.setEdad(edad);
 
-		// DNI y creación del usuario
-		// El bucle se ejecuta mientras el valor de DNI sea nulo.
+		// Cuando el valor de DNI deje de ser nulo, se crea el usuario
 		do {
 
 			System.out.println("Introduce tu DNI: ");
@@ -58,10 +54,9 @@ public class Main {
 		} while (miUsuario.getDNI() == null);
 
 		// Creación de cuenta y mensaje de confirmación
+		miCuenta = new Cuenta(miUsuario);
 
-		Cuenta miCuenta = new Cuenta(miUsuario);
-
-		System.out.println("\nEl saldo inicial de tu cuenta es de " + Cuenta.getSaldo() + " €.");
+		System.out.println("\nEl saldo inicial de tu cuenta es de " + miCuenta.getSaldo() + " €.");
 
 		System.out.println("\n>>> " + miCuenta.toString());
 
@@ -78,8 +73,6 @@ public class Main {
 			System.out.println("\nRealiza una nueva acción:\n" + "1. Introduce un nuevo gasto\n"
 					+ "2. Introduce un nuevo ingreso\n" + "3. Mostrar gastos\n" + "4. Mostrar ingresos\n"
 					+ "5. Mostrar saldo\n" + "0. Salir\n");
-
-			// Scanner consola = new Scanner(System.in);
 
 			// Acción seleccionada por el usuario
 			accion = Integer.parseInt(consola.nextLine()); // Consume salto de línea
@@ -110,23 +103,23 @@ public class Main {
 		case 3: // Mostrar gastos
 
 			System.out.println("\nTu gastos han sido los siguientes:\n");
-			
+
 			mostrarGastos();
-			
+
 			break;
 
 		case 4: // Mostrar ingresos
 
 			System.out.println("\nTu ingresos han sido los siguientes:\n");
-			
+
 			mostrarIngresos();
-			
+
 			break;
 
 		case 5: // Ver saldo
 
 			mostrarSaldo();
-			
+
 			break;
 		}
 
@@ -138,18 +131,21 @@ public class Main {
 
 		description = consola.nextLine();
 
-		System.out.println("\nIntroduce la cantidad a gastar (Saldo disponible: " + Cuenta.getSaldo() + " €)");
+		System.out.println("\nIntroduce la cantidad a gastar (Saldo disponible: " + miCuenta.getSaldo() + " €)");
 
 		cantidad = Double.parseDouble(consola.nextLine()); // Consume salto de línea
 
-		// System.out.println("\n" + cantidad);
-
+		// Si la cantidad del gasto es mayor que el saldo disponible, se lanzará la
+		// excepción 'saldoInsuficiente' de tipo 'GastoException', la cual será
+		// capturada para que el programa se siga ejecutando y muestre al usuario un
+		// mensaje de error. El movimiento no se realizará y se mostrará el menú de
+		// opciones para que el usuario pueda realizar una nueva acción.
 		try {
 
-			saldo = Cuenta.addGastos(description, cantidad);
+			miCuenta.addGastos(description, cantidad);
 
 			System.out.println(
-					"\nMovimiento realizado. El saldo resultante de tu cuenta es de " + Cuenta.getSaldo() + " €");
+					"\nMovimiento realizado. El saldo resultante de tu cuenta es de " + miCuenta.getSaldo() + " €");
 
 		} catch (GastoException saldoInsuficiente) {
 
@@ -171,47 +167,46 @@ public class Main {
 
 		cantidad = Double.parseDouble(consola.nextLine()); // Consume salto de línea
 
-		saldo = Cuenta.addIngresos(description, cantidad);
+		miCuenta.addIngresos(description, cantidad);
 
-		System.out
-				.println("\nMovimiento realizado. El saldo resultante de tu cuenta es de " + Cuenta.getSaldo() + " €");
+		System.out.println(
+				"\nMovimiento realizado. El saldo resultante de tu cuenta es de " + miCuenta.getSaldo() + " €");
 
 		menu();
 
 	} // nuevoIngreso()
-	
+
 	private static void mostrarGastos() {
-		
-		List<Gasto> listaGastos = Cuenta.getGastos();
-		
+
+		List<Gasto> listaGastos = miCuenta.getGastos();
+
 		for (int i = 0; i < listaGastos.size(); i++) {
-			
+
 			System.out.println(listaGastos.get(i));
 		}
-		
+
 		menu();
 	}
 
 	private static void mostrarIngresos() {
-		
-		List<Ingreso> listaIngresos = Cuenta.getIngresos();
-		
+
+		List<Ingreso> listaIngresos = miCuenta.getIngresos();
+
 		for (int i = 0; i < listaIngresos.size(); i++) {
-			
+
 			System.out.println(listaIngresos.get(i));
 		}
-		
+
 		menu();
 	}
-	
+
 	private static void mostrarSaldo() {
-	
-		System.out.println("\nEl saldo actual de tu cuenta es de " + Cuenta.getSaldo() + " €");
-		
+
+		System.out.println("\nEl saldo actual de tu cuenta es de " + miCuenta.getSaldo() + " €");
+
 		menu();
 	}
-	
-	
+
 	public static void main(String[] args) {
 
 		// Creación de usuario y cuenta
@@ -221,7 +216,6 @@ public class Main {
 		menu();
 
 		// Gestión de movimientos de ingreso o gasto
-		// operaciones();
 
 		System.out.println("\nFin del programa. \nGracias por utilizar la aplicación.");
 

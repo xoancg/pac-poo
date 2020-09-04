@@ -9,12 +9,12 @@ public class Cuenta {
 	private static List<Gasto> gastos; // Lista 'gastos' de tipo Gasto
 	private static List<Ingreso> ingresos; // Lista 'ingresos' de tipo Ingreso
 
-	// Constructor cuenta
+	// Constructor de cuenta
 	public Cuenta(Usuario usuario) {
 
 		this.usuario = usuario;
 		Cuenta.saldo = 0.0;
-		
+
 		// Inicializamos las listas
 		Cuenta.ingresos = new ArrayList<>();
 		Cuenta.gastos = new ArrayList<>();
@@ -22,7 +22,7 @@ public class Cuenta {
 	}
 
 	// Getter saldo
-	public static double getSaldo() {
+	public double getSaldo() {
 
 		return saldo;
 	}
@@ -44,16 +44,16 @@ public class Cuenta {
 		this.usuario = usuario;
 	}
 
-	public static double addIngresos(String description, double cantidad) {
+	public double addIngresos(String description, double cantidad) {
 
 		saldo = saldo + cantidad;
 
 		ingresos.add(new Ingreso(cantidad, description));
-		
+
 		return saldo; // this.saldo?
 	}
 
-	public static double addGastos(String description, double cantidad) throws GastoException {
+	public double addGastos(String description, double cantidad) throws GastoException {
 
 		if (cantidad > saldo) {
 
@@ -62,7 +62,7 @@ public class Cuenta {
 		} else {
 
 			saldo = saldo - cantidad;
-			
+
 			gastos.add(new Gasto(cantidad, description));
 		}
 
@@ -70,13 +70,13 @@ public class Cuenta {
 	}
 
 	// Getter ingresos
-	public static List<Ingreso> getIngresos() {
+	public List<Ingreso> getIngresos() {
 
 		return ingresos;
 	}
 
 	// Getter gastos
-	public static List<Gasto> getGastos() {
+	public List<Gasto> getGastos() {
 
 		return gastos;
 	}
