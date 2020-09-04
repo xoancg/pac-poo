@@ -134,7 +134,7 @@ public class Main {
 
 		cantidad = Double.parseDouble(consola.nextLine()); // Consume salto de línea
 
-		System.out.println("\n" + cantidad);
+		//System.out.println("\n" + cantidad);
 
 		try {
 
@@ -148,32 +148,6 @@ public class Main {
 			System.out.println(saldoInsuficiente.getMessage());
 
 		}
-
-		/*
-		 * try {
-		 * 
-		 * if (cantidad > Cuenta.getSaldo()) {
-		 * 
-		 * System.out.println("Saldo insuficiente: " + Cuenta.getSaldo() + " €)");
-		 * nuevoGasto();
-		 * 
-		 * //throw new GastoException();
-		 * 
-		 * } else {
-		 * 
-		 * saldo = Cuenta.addGastos(description, cantidad);
-		 * 
-		 * System.out.
-		 * println("\nMovimiento realizado. El saldo resultante de tu cuenta es de " +
-		 * Cuenta.getSaldo() + " €");
-		 * 
-		 * }
-		 * 
-		 * 
-		 * } catch (GastoException saldoInsuficiente) {
-		 * 
-		 * System.out.println(saldoInsuficiente.getMessage()); }
-		 */
 
 		menu();
 
