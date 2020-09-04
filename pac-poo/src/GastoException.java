@@ -11,7 +11,7 @@ public class GastoException extends Exception {
 	public GastoException() {
 		
 		// Sobreescribimos el método getMessage() de la clase java.lang.Exception
-		super("\nOperación no realizada por saldo insuficiente. El saldo disponible es de " + Cuenta.getSaldo() + " €");
+		super("\n¡Vaya! Va a ser que no dispones de saldo suficiente (" + Cuenta.getSaldo() + " €).");
 
 	}
 
