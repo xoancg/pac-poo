@@ -2,9 +2,9 @@
 public class Ingreso extends Dinero {
 
 	// Constructor
-	public Ingreso(double dinero, String description) {
+	public Ingreso(double ingreso, String description) {
 		
-		this.dinero = dinero;
+		dinero = ingreso;
 		this.description = description;
 	}
 

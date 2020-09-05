@@ -1,11 +1,11 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.ArrayList; // Para poder construir ArrayList<>
+import java.util.List; // Para poder construir ArrayList<>
 
 public class Cuenta {
 
 	// Atributos
-	private Usuario usuario;
 	private static double saldo;
+	private Usuario usuario;
 	private static List<Gasto> gastos; // Lista 'gastos' de tipo Gasto
 	private static List<Ingreso> ingresos; // Lista 'ingresos' de tipo Ingreso
 
@@ -13,12 +13,11 @@ public class Cuenta {
 	public Cuenta(Usuario usuario) {
 
 		this.usuario = usuario;
-		Cuenta.saldo = 0.0;
+		saldo = 0.0;
 
 		// Inicializamos las listas
-		Cuenta.ingresos = new ArrayList<>();
-		Cuenta.gastos = new ArrayList<>();
-
+		ingresos = new ArrayList<>();
+		gastos = new ArrayList<>();
 	}
 
 	// Getter saldo

@@ -28,6 +28,7 @@ public class Main {
 		System.out.println("Introduce tu edad: ");
 
 		int edad = Integer.parseInt(consola.nextLine()); // Consume salto de línea
+		// Fuente:
 		// https://es.stackoverflow.com/questions/121684/problema-clase-scanner-en-java-al-introducir-varios-strings-como-variables
 
 		miUsuario.setEdad(edad);
@@ -48,7 +49,6 @@ public class Main {
 			} else {
 
 				System.out.println("DNI Incorrecto. Inténtalo de nuevo:");
-
 			}
 
 		} while (miUsuario.getDNI() == null);
@@ -60,9 +60,9 @@ public class Main {
 
 		System.out.println("\n>>> " + miCuenta.toString());
 
-	} // login()
+	} // Fin login()
 
-	// Función para imprimir el menú en pantalla y seleccionar una opción a realizar
+	// Imprimir el menú en pantalla y seleccionar una opción a realizar
 	private static void menu() {
 
 		int accion;
@@ -85,8 +85,8 @@ public class Main {
 
 		case 0: // Salir
 
-			System.out.println("\nSalir.");
-			
+			// System.out.println("\nSalir.");
+
 			break;
 
 		case 1: // Nuevo gasto
@@ -124,7 +124,7 @@ public class Main {
 			break;
 		}
 
-	} // menu()
+	} // Fin menu()
 
 	private static void nuevoGasto() {
 
@@ -136,11 +136,14 @@ public class Main {
 
 		cantidad = Double.parseDouble(consola.nextLine()); // Consume salto de línea
 
-		// Si la cantidad del gasto es mayor que el saldo disponible, se lanzará la
-		// excepción 'saldoInsuficiente' de tipo 'GastoException', la cual será
-		// capturada para que el programa se siga ejecutando y muestre al usuario un
-		// mensaje de error. El movimiento no se realizará y se mostrará el menú de
-		// opciones para que el usuario pueda realizar una nueva acción.
+		/*
+		 * Si la cantidad del gasto es mayor que el saldo disponible, se lanzará la
+		 * excepción 'saldoInsuficiente' de tipo 'GastoException', la cual será
+		 * capturada para que el programa se siga ejecutando y muestre al usuario un
+		 * mensaje de error. El movimiento no se realizará y se mostrará el menú de
+		 * opciones para que el usuario pueda realizar una nueva acción.
+		 *
+		 */
 		try {
 
 			miCuenta.addGastos(description, cantidad);
@@ -151,12 +154,11 @@ public class Main {
 		} catch (GastoException saldoInsuficiente) {
 
 			System.out.println(saldoInsuficiente.getMessage());
-
 		}
 
 		menu();
 
-	} // nuevoGasto()
+	} // Fin nuevoGasto()
 
 	private static void nuevoIngreso() {
 
@@ -175,7 +177,7 @@ public class Main {
 
 		menu();
 
-	} // nuevoIngreso()
+	} // Fin nuevoIngreso()
 
 	private static void mostrarGastos() {
 
@@ -187,8 +189,8 @@ public class Main {
 		}
 
 		menu();
-		
-	} // mostrarGastos()
+
+	} // Fin mostrarGastos()
 
 	private static void mostrarIngresos() {
 
@@ -200,16 +202,16 @@ public class Main {
 		}
 
 		menu();
-		
-	}
+
+	} // Fin motrarIngresos()
 
 	private static void mostrarSaldo() {
 
 		System.out.println("\nEl saldo actual de tu cuenta es de " + miCuenta.getSaldo() + " €");
 
 		menu();
-		
-	} // mostrarSaldo()
+
+	} // Fin mostrarSaldo()
 
 	public static void main(String[] args) {
 
@@ -223,6 +225,6 @@ public class Main {
 
 		System.out.println("\nFin del programa. \nGracias por utilizar la aplicación.");
 
-	} // main()
+	} // Fin main()
 
-} // Main Class
+} // Fin Clase Main
