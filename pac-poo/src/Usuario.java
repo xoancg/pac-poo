@@ -44,7 +44,8 @@ public class Usuario {
 
 	// Setter DNI con comprobación de formato correcto del DNI: ocho números y una
 	// letra con guión opcional
-	public boolean setDNI(String DNI) {
+	// Palabra reservada 'final' para evitar que este método sea sobreescrito
+	public final boolean setDNI(String DNI) {
 
 		if (DNI.matches("^[0-9]{8}-?[a-zA-Z]$") == true) {
 
